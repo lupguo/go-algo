@@ -1,4 +1,4 @@
-package dstruct
+package heap
 
 import (
 	"reflect"
