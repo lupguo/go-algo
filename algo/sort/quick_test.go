@@ -29,8 +29,8 @@ func TestQuick(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if gotSortedList := Quick(tt.args.A, len(tt.args.A)); !reflect.DeepEqual(gotSortedList, tt.wantSortedList) {
-				t.Errorf("Quick() = %v, want %v", gotSortedList, tt.wantSortedList)
+			if gotSortedList := QSort(tt.args.A, len(tt.args.A)); !reflect.DeepEqual(gotSortedList, tt.wantSortedList) {
+				t.Errorf("QSort() = %v, want %v", gotSortedList, tt.wantSortedList)
 			}
 		})
 	}
@@ -46,17 +46,22 @@ func TestPivot(t *testing.T) {
 	}{
 		{"T2", args{[]int{1}}},
 		{"T3", args{[]int{1,2}}},
+		{"T3.1", args{[]int{7,4}}},
 		{"T4", args{[]int{1,2,3}}},
 		{"T5", args{[]int{1,2,3,4}}},
 		{"T6", args{[]int{1,2,3,4,5}}},
 		{"T7", args{[]int{1,2,2,5}}},
 		{"T8", args{[]int{1,2,2,5,5}}},
+		{"T9", args{[]int{0,5,3,5,5}}},
+		{"T10", args{[]int{2,5,2,2,5,5}}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			t.Logf("list %v", tt.args.A)
 			Pivot(tt.args.A, len(tt.args.A))
-			t.Logf("after pivot of %v\n", tt.args.A, )
+			t.Logf("after pivot %v\n", tt.args.A, )
+			qs := QSort(tt.args.A, len(tt.args.A))
+			t.Logf("after quick sort %v\n", qs)
 		})
 	}
 }

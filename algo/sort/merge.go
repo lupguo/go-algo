@@ -1,6 +1,9 @@
 package sort
 
 //MSort 归并 - 分治: 先分区成两个列表，然后Merge有序列表
+// 时间复杂度O(Nlog(N)) - T(N)=2(N/2)+N
+// 空间复杂度O(N) - 因为每次递归函数返回，申请的M切片空间被释放
+// 非原地排序，占用O(N)空间；稳定排序，支持Merge过程中，相同元素按左排序列表，右排序列表排放
 func MSort(A []int, n int) (sortedList []int) {
 	// 1. 递归退出条件
 	if n < 2 {

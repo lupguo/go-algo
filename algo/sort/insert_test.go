@@ -22,7 +22,7 @@ func TestInsert(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if gotSortedList := Insert(tt.args.A); !reflect.DeepEqual(gotSortedList, tt.wantSortedList) {
+			if gotSortedList := Insert(tt.args.A, len(tt.args.A)); !reflect.DeepEqual(gotSortedList, tt.wantSortedList) {
 				t.Errorf("Insert() = %v, want %v", gotSortedList, tt.wantSortedList)
 			}
 		})

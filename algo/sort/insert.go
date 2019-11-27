@@ -1,7 +1,9 @@
 package sort
 
-func Insert(A []int) (sortedList []int) {
-	for i := 1; i < len(A); i++ {
+//Insert 插入排序，分成未排序和已排序区间，原地排序、稳定排序(相同元素可以插其后)、O(N^2)
+//	Tips: 插入排序需要挪动从[待插入, 已排序]区间内的元素数据
+func Insert(A []int, n int) (sortedList []int) {
+	for i := 1; i < n; i++ {
 		// j初始化指向i位置, tmp记录当前轮待插入元素值
 		j, tmp := i, A[i]
 		// 迭代前p个有序元素，依次将A[j-1]和待插入元素值比较
