@@ -13,8 +13,10 @@ type ListNode struct {
 
 //Generate 随机生成一个指定长度的链表，并返回链表头节点
 func Generate(len int) (head *ListNode) {
-	head = new(ListNode)
-	for i, p := 0, head; i < len; i++ {
+	head = &ListNode{
+		Next: nil,
+	}
+	for i, p := 0, head ; i < len; i++ {
 		p.Next = &ListNode{
 			Val:  rand.Intn(10),
 			Next: nil,
@@ -26,7 +28,9 @@ func Generate(len int) (head *ListNode) {
 
 //GenerateSorted 生成有序链表数据
 func GenerateSorted(len int) (head *ListNode) {
-	head = new(ListNode)
+	head = &ListNode{
+		Next: nil,
+	}
 	weight := rand.Intn(5)
 	for i, p := 0, head; i < len; i++ {
 		p.Next = &ListNode{
